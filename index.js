@@ -25,6 +25,11 @@ app.get('/',(req,res)=>{
 client.connect(err => {
   const collection = client.db(`${process.env.DB}`).collection("post");
   console.log('database connected');
+  app.post('/blog/new', (req, res)=>{
+    const body = req.body;
+    collection.insertOne(body,(req,res)=>{
+    })
+  })
   client.close();
 });
 
